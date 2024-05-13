@@ -110,7 +110,7 @@ app.post("/api/store/searchItem", (request, response) => {
   const cursor = client
     .db(DATABASENAME)
     .collection("items")
-    .find({ name: request.body.name });
+    .find({ name: { $regex: request.body.name } });
   async function run() {
     console.log(request.body.name);
     try {
